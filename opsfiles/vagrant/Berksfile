@@ -2,8 +2,7 @@ source 'https://api.berkshelf.com'
 
 cookbook 'git'
 cookbook 'build-essential'
-cookbook 'vim'
 cookbook 'rbenv', :git => 'git://github.com/fnichol/chef-rbenv.git', :branch => 'v0.8.0'
 cookbook 'ruby_build'
-cookbook 'rails'
-
+cookbook 'nodejs'
+cookbook 'vim'

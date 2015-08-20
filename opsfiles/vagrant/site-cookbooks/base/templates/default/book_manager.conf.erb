@@ -1,0 +1,11 @@
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+  ServerName book-manager.aucfan.com
+  DocumentRoot /deploy/book-manager/public
+  RailsEnv development
+  <Directory /deploy/book-manager/public>
+    AllowOverride all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>

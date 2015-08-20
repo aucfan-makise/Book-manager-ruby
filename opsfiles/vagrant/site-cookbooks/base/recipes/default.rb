@@ -6,11 +6,8 @@
 
 package "httpd" 
 
-template "/etc/httpd/conf/httpd.conf" do
-	source "httpd.conf.erb"
-end
-service "httpd" do
-	action [:start, :enable]
+template "/etc/httpd/conf.d/book_manager.conf" do
+    source "book_manager.conf.erb"
 end
 
 package "curl-devel" do
@@ -36,6 +33,10 @@ bash 'install_passenger' do
     creates "/etc/httpd/conf.d/passenger.conf"
 end
 
+#passengerが入ってないとmoduleの設定がなくて怒られる
+service "httpd" do
+	action [:start, :enable]
+end
 
 execute "setenforce 0" do
 	only_if "getenforce | grep -q Enforcing"
